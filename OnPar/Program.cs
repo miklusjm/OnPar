@@ -109,6 +109,63 @@ namespace OnPar
 
         static void Calculator()
         {
+            bool loop = true;
+            while (loop == true)
+            {
+                Console.Clear();
+                Console.Write("Enter the first number: ");
+                double firstNum = double.Parse(Console.ReadLine());
+                Console.Write("Enter the operator: ");
+                string op = Console.ReadLine();
+                Console.Write("Enter the second number: ");
+                double secondNum = double.Parse(Console.ReadLine());
+                Console.Clear();
+                if (op == "+")
+                {
+                    Console.WriteLine($"{firstNum} + {secondNum} = {firstNum + secondNum}");
+                }
+                else if (op == "-")
+                {
+                    Console.WriteLine($"{firstNum} - {secondNum} = {firstNum - secondNum}");
+                }
+                else if (op == "*")
+                {
+                    Console.WriteLine($"{firstNum} * {secondNum} = {firstNum * secondNum}");
+                }
+                else if (op == "/")
+                {
+                    Console.WriteLine($"{firstNum} / {secondNum} = {firstNum / secondNum}");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid operator.");
+                }
+
+                bool contLoop = true;
+                while (contLoop == true)
+                {
+                    Console.Write("\n\nDo another calculation? (YES/NO): ");
+                    string cont = Console.ReadLine().ToLower();
+                    if (cont == "yes")
+                    {
+                        contLoop = false;
+                    }
+                    else if (cont == "no")
+                    {
+                        contLoop = false;
+                        loop = false;
+                        Console.Clear();
+                        Console.WriteLine("GOODBYE...");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Invalid response.\n\n");
+                    }
+
+                }
+            }
 
         }
     }
