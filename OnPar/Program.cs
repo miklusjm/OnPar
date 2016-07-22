@@ -29,6 +29,13 @@ namespace OnPar
                 }
                 else if (control == "2")
                 {
+                    Console.Clear();
+                    Console.WriteLine("Try the ^ operator for exponents in the form X ^ Y.");
+                    Console.WriteLine("Try the r operator for roots in the form Xth root of Y.");
+                    Console.WriteLine("Neither of the above features are guaranteed for all use cases.");
+                    Console.WriteLine();
+                    Console.WriteLine("Hit Enter to continue.");
+                    Console.ReadKey();
                     Calculator();
                 }
                 else if (control == "3")
@@ -135,6 +142,39 @@ namespace OnPar
                 else if (op == "/")
                 {
                     Console.WriteLine($"{firstNum} / {secondNum} = {firstNum / secondNum}");
+                }
+                else if (op == "^")
+                {
+                    double expo = 1;
+                    if (secondNum < 0)
+                    {
+                        Console.WriteLine("Second number can't be negative for exponents!");
+                    }
+                    else
+                    {
+                        for (int x = 0; x < secondNum; x++)
+                        {
+                            expo *= firstNum;
+                        }
+                        Console.WriteLine($"{firstNum} ^ {secondNum} = {expo}");
+                    }
+                }
+                else if (op == "r")
+                {
+                    double check = 1;
+                    double last = 2;
+                    //max 20 iterations or
+                    for (int x = 1; x <= 50 && Math.Abs(last - check) > .000001; x++)
+                    {
+                        last = check;
+                        double lastExp = 1;
+                        for (int y = 0; y < firstNum - 1; y++)
+                        {
+                            lastExp *= last;
+                        }
+                        check = (1 / firstNum) * ((firstNum - 1) * last + (secondNum / lastExp));
+                    }
+                    Console.WriteLine($"The {firstNum}th root of {secondNum} is {check}.");
                 }
                 else
                 {
